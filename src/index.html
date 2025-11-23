@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amplify Guestbook Simple</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .auth-container, .guestbook-container { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        .message-item { border: 1px solid #eee; padding: 10px; margin-top: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .message-item button { margin-left: 10px; background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
+        .message-item .owner-tag { font-weight: bold; color: green; }
+        input, button { padding: 10px; margin-top: 5px; width: 100%; box-sizing: border-box; }
+        #app-status { margin-top: 10px; color: blue; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/aws-amplify@latest/dist/aws-amplify.min.js"></script>
+    <script src="./amplify-config.js"></script> 
+</head>
+<body>
+    <h1>Guestbook Simple con Amplify y SMS</h1>
+
+    <div id="auth-ui">
+        <div id="register-login" class="auth-container">
+            <h2>Autenticación</h2>
+            <div id="auth-status"></div>
+            <input type="text" id="phone" placeholder="Número de Teléfono (+código país)">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="register()">Registrar</button>
+            <button onclick="login()">Ingresar</button>
+        </div>
+
+        <div id="verify-code" class="auth-container" style="display:none;">
+            <h2>Verificación SMS</h2>
+            <input type="text" id="verification-code" placeholder="Código de Verificación SMS">
+            <button onclick="confirmSignUp()">Confirmar Código</button>
+        </div>
+    </div>
+
+    <div id="guestbook-ui" class="guestbook-container" style="display:none;">
+        <h2>📝 Publicar Mensaje</h2>
+        <input type="text" id="message-content" placeholder="Tu mensaje...">
+        <button onclick="postMessage()">Publicar</button>
+
+        <hr>
+
+        <h2>📚 Mis Mensajes</h2>
+        <div id="user-messages">
+            </div>
+        
+        <button onclick="logout()">Cerrar Sesión</button>
+    </div>
+
+    <div id="app-status">Cargando aplicación...</div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

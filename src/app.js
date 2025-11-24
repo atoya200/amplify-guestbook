@@ -1,5 +1,5 @@
 // Configura Amplify con la exportación generada por la CLI
-Amplify.configure(amplifyConfig);
+Amplify.configure(window.amplifyConfig);
 
 // Define las operaciones GraphQL
 const createMessageMutation = `

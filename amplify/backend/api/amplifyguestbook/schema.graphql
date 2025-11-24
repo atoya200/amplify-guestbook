@@ -1,0 +1,14 @@
+type Message @model @auth(rules: [
+  # 1. El dueño puede hacer CRUD en su mensaje
+  { allow: owner, operations: [create, read, update, delete] },
+
+  # 2. Todos los usuarios AUTENTICADOS (userPools) pueden leer cualquier mensaje.
+  # Usamos 'groups' y especificamos que el grupo 'Authenticated' puede leer.
+  { allow: groups, groups: ["Authenticated"], provider: userPools, operations: [read] }
+  
+  { allow: public, provider: apiKey, operations: [create, read, update, delete] },
+]) {
+  id: ID!
+  content: String!
+  createdAt: AWSDateTime!
+}

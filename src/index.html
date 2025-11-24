@@ -1,21 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amplify Guestbook Simple</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .auth-container, .guestbook-container { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
-        .message-item { border: 1px solid #eee; padding: 10px; margin-top: 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
-        .message-item button { margin-left: 10px; background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; }
-        .message-item .owner-tag { font-weight: bold; color: green; }
-        input, button { padding: 10px; margin-top: 5px; width: 100%; box-sizing: border-box; }
-        #app-status { margin-top: 10px; color: blue; }
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .auth-container,
+        .guestbook-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .message-item {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .message-item button {
+            margin-left: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .message-item .owner-tag {
+            font-weight: bold;
+            color: green;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #app-status {
+            margin-top: 10px;
+            color: blue;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/aws-amplify@latest/dist/aws-amplify.min.js"></script>
-    <script src="./amplify-config.js"></script> 
+    <script src="./amplify-config.js"></script>
+
+    <script>
+        // Crear alias para usar Amplify normalmente
+        const Amplify = window.aws_amplify.Amplify;
+
+        // Configuración generada por Amplify CLI
+        Amplify.configure(amplifyConfig);
+    </script>
+
 </head>
+
 <body>
     <h1>Guestbook Simple con Amplify y SMS</h1>
 
@@ -45,8 +101,8 @@
 
         <h2>📚 Mis Mensajes</h2>
         <div id="user-messages">
-            </div>
-        
+        </div>
+
         <button onclick="logout()">Cerrar Sesión</button>
     </div>
 
@@ -54,4 +110,5 @@
 
     <script src="./app.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "amplifyguestbook",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authamplifyguestbookc6a8be27c6a8be27",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2025-11-24T02:08:47.469Z"
+}
